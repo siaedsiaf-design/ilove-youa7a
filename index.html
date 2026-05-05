@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>💙 مفاجأة لكريم 💙</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: linear-gradient(135deg, #ffb6c1, #0a1f44);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* شاشة الدخول */
+.login {
+  margin-top: 150px;
+}
+
+input {
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  font-size: 18px;
+  outline: none;
+}
+
+button {
+  padding: 12px 25px;
+  border-radius: 20px;
+  border: none;
+  background: white;
+  color: #0a1f44;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+/* الصفحة الرئيسية */
+#main {
+  display: none;
+  animation: fadeIn 2s;
+}
+
+.message {
+  font-size: 24px;
+  line-height: 1.8;
+  padding: 20px;
+}
+
+/* الصور */
+.images img {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  margin: 10px;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.images img:hover {
+  transform: scale(1.1);
+}
+
+/* قلوب */
+.heart {
+  position: fixed;
+  color: pink;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* مشغل الصوت */
+audio {
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- شاشة الدخول -->
+<div class="login">
+  <h2>🤍 كلمة السر وهتشوف المفاجأة 🤍</h2>
+  <input type="password" id="pass" placeholder="اكتب كلمة السر">
+  <br>
+  <button onclick="check()">دخول</button>
+</div>
+
+<!-- الصفحة الرئيسية -->
+<div id="main">
+
+  <div class="message">
+    ❤️ يا حمو ❤️ <br><br>
+
+    بصراحة أنا مش بعرف أقول الكلام ده كتير…<br>
+    بس إنت شخص غالي جدًا عندي 🤍<br><br>
+
+    وجودك في حياتي فرق معايا بجد<br>
+    وضحكتك بتفرق في يومي 😄<br><br>
+
+    بحبك يا صاحبي ❤️<br>
+    وربنا يديمك في حياتي 💙<br><br>
+
+    ودي حاجة بسيطة عشان أقولك إنك مهم جدًا عندي ✨
+  </div>
+
+  <!-- الصور -->
+  <div class="images">
+    <img src="karem1.jpg" onerror="this.style.display='none'">
+    <img src="karem2.jpg" onerror="this.style.display='none'">
+  </div>
+
+  <!-- الأغنية -->
+  <audio id="song" controls loop>
+    <source src="always.mp3" type="audio/mpeg">
+  </audio>
+
+</div>
+
+<script>
+function check() {
+  let p = document.getElementById("pass").value;
+
+  if (p.trim().toLowerCase() === "ilove") {
+    document.querySelector(".login").style.display = "none";
+    document.getElementById("main").style.display = "block";
+
+    let audio = document.getElementById("song");
+    audio.play().catch(() => {
+      alert("المتصفح منع تشغيل الصوت تلقائيًا");
+    });
+
+  } else {
+    alert("حاول تاني 😅");
+  }
+}
+
+/* قلوب متحركة */
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 300);
+</script>
+
+</body>
+</html>
